@@ -32,7 +32,7 @@ entity Customers {
       Address     : String;
       City        : String;
       Region      : String;
-      PostalCode  : Integer;
+      PostalCode  : String;
       Country     : String;
       Phone       : String;
       Fax         : String;
@@ -51,7 +51,7 @@ entity Orders {
       ShipAddress    : String;
       ShipCity       : String;
       ShipRegion     : String;
-      ShipPostalCode : Integer;
+      ShipPostalCode : String;
       ShipCountry    : String;
       CustomerInfo   : Association to one Customers on CustomerInfo.CustomerID = $self.CustomerID;
       OrderedBy      : Integer;
@@ -63,7 +63,7 @@ entity Products {
       SupplierID      : Integer;
       CategoryID      : Integer;
       QuantityPerUnit : String;
-      UnitPrice       : Integer;
+      UnitPrice       : Decimal(12,2);
       UnitsInStock    : Integer;
       UnitsOnOrder    : Integer;
       ReorderLevel    : Integer;
@@ -71,4 +71,10 @@ entity Products {
       OrderedBy       : Integer;
       OrderedByinfo   : Association to many Orders on OrderedByinfo.OrderedBy = $self.OrderedBy;
 
+}
+entity Countries {
+  key Country :String;
+  CountryCode :String;
+  Currency    :String;
+  Code        :String;
 }
